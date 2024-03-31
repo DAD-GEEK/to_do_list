@@ -24,11 +24,25 @@ void createTask(GlobalKey<FormState> _key,
   if (_key.currentState!.validate()) {
     _key.currentState!.save();
     if (title != null && description != null) {
-      print(title);
-      Task  task = Task(title: title, description: description) ;
+      Task task = Task(title: title, description: description);
       provider.addTask(task);
       Navigator.pop(context);
+    }
+  }
+}
 
+void editTask(GlobalKey<FormState> _key,
+    {required String? title,
+    required String? description,
+    required TaskProvider provider,
+    required BuildContext context,
+    required int index}) {
+  if (_key.currentState!.validate()) {
+    _key.currentState!.save();
+    if (title != null && description != null) {
+      Task task = Task(title: title, description: description);
+      provider.editTask(index, task);
+      Navigator.pop(context);
     }
   }
 }

@@ -23,7 +23,7 @@ class MainApp extends StatelessWidget {
       title: 'To Do List',
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBarWidget('To Do List'),
+        appBar: AppBarWidget("Lista de Tareas"),
         body: ListTaskPage(),
         
       ),

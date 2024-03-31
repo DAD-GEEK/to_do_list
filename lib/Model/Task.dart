@@ -4,10 +4,7 @@ class Task {
   String description;
   bool isDone;
 
-  Task({required this.title, required this.description, this.isDone = false});
+  Task({required this.title, required this.description, this.isDone = false});  
 
-  void toggleDone(){
-    isDone = !isDone;
-  }
   
 }

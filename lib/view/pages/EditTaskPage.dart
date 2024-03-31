@@ -2,32 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list/Controller/CreateTaskController.dart';
 import 'package:to_do_list/Controller/TaskProvider.dart';
+import 'package:to_do_list/Model/Task.dart';
 import 'package:to_do_list/view/widgets/AppBarWidget.dart';
 
-class CreateTaskPage extends StatefulWidget {
-
-
+class EditTaskPage extends StatefulWidget {
+  final int index;
+  const EditTaskPage({super.key, required this.index});
 
   @override
-  State<CreateTaskPage> createState() => _CreatetaskPageState();
+  State<EditTaskPage> createState() => _EditTaskPageState();
 }
 
-class _CreatetaskPageState extends State<CreateTaskPage> {
-  GlobalKey<FormState> _key = GlobalKey();
-
-  String? title = "";
-  String? description = "";
+class _EditTaskPageState extends State<EditTaskPage> {
+  final GlobalKey<FormState> _key = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
+    int index = widget.index;
     return Scaffold(
-      appBar: AppBarWidget("New Task"),
+      appBar: AppBarWidget("Edit Task"),
       body: Consumer<TaskProvider>(
-          builder: (context, taskProvider, child) => taskForm(taskProvider)),
+          builder: (context, taskProvider, child) => taskForm(taskProvider,index)),
     );
   }
 
-  Form taskForm(TaskProvider taskProvider) {
+  Form taskForm(TaskProvider taskProvider,int index) {
+    List<Task> tasks = taskProvider.tasks;
     return Form(
       key: _key,
       child: Padding(
@@ -35,14 +35,16 @@ class _CreatetaskPageState extends State<CreateTaskPage> {
         child: Column(
           children: [
             TextFormField(
+              initialValue: tasks[index].title,
               decoration: const InputDecoration(labelText: "Title"),
-              validator: validateTaskName   ,
-              onChanged: (value) => title = value,
+              validator: validateTaskName,
+              onChanged: (value) => tasks[index].title = value,
             ),
             TextFormField(
+              initialValue: tasks[index].description,
               decoration: const InputDecoration(labelText: "Description"),
               validator: validateTaskDescription,
-              onChanged: (value) => description = value,
+              onChanged: (value) => tasks[index].description = value,
             ),
             ElevatedButton(
               style: ButtonStyle(
@@ -50,10 +52,12 @@ class _CreatetaskPageState extends State<CreateTaskPage> {
                     MaterialStateProperty.all<Color>(Colors.lightBlueAccent),
               ),
               child: const Text("Save", style: TextStyle(color: Colors.black)),
-              onPressed: () => createTask(_key,
-                  title: title,
-                  description: description,
-                  provider: taskProvider, context: context),
+              onPressed: () => editTask(_key,
+                  title: tasks[index].title,
+                  description: tasks[index].description,
+                  provider: taskProvider,
+                  context: context,
+                  index: index),
             )
           ],
         ),
