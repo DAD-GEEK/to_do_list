@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 
-class appBarWidget extends StatelessWidget {
-  const appBarWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return  AppBar(
-      title: const Text('Lista de Tareas'),
+PreferredSizeWidget AppBarWidget(String title) {
+  return AppBar(
+      title: Text(title),
       centerTitle: true,
       backgroundColor: Colors.lightBlueAccent,
       titleTextStyle: const TextStyle(
@@ -17,7 +11,5 @@ class appBarWidget extends StatelessWidget {
         fontSize: 35,
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.w900,
-      )
-    );
-  }
+      ));
 }
