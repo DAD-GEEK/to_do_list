@@ -20,7 +20,7 @@ class _EditTaskPageState extends State<EditTaskPage> {
   Widget build(BuildContext context) {
     int index = widget.index;
     return Scaffold(
-      appBar: AppBarWidget("Edit Task"),
+      appBar: AppBarWidget("Editar Tarea"),
       body: Consumer<TaskProvider>(
           builder: (context, taskProvider, child) => taskForm(taskProvider,index)),
     );
@@ -51,7 +51,7 @@ class _EditTaskPageState extends State<EditTaskPage> {
                 backgroundColor:
                     MaterialStateProperty.all<Color>(Colors.lightBlueAccent),
               ),
-              child: const Text("Save", style: TextStyle(color: Colors.black)),
+              child: const Text("Guardar", style: TextStyle(color: Colors.black)),
               onPressed: () => editTask(_key,
                   title: tasks[index].title,
                   description: tasks[index].description,

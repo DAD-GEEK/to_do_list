@@ -9,8 +9,8 @@ Este proyecto es una aplicación de listado de tareas, diseñada para ayudar a l
 Para instalar y ejecutar este proyecto localmente, necesitarás tener instalado Dart y Flutter. Luego, puedes clonar este repositorio y ejecutar `flutter run` en la raíz del proyecto.
 
 ```bash
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/GROOT-GEEK/to_do_list.git
+cd to_do_list
 flutter run
 ```
 
