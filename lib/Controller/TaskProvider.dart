@@ -19,6 +19,11 @@ class TaskProvider extends ChangeNotifier{
     _tasks[index] = task;
     notifyListeners();
   }
+
+  toggleTask(int index) {
+    _tasks[index].isDone = !_tasks[index].isDone;
+    notifyListeners();
+  }
   
 }
 

@@ -29,15 +29,28 @@ class ListTaskPage extends StatelessWidget {
       itemCount: tasks.length,
       itemBuilder: (context, index) {
         return ListTile(
-          title: Text(tasks[index].title),
-          subtitle: Text(tasks[index].description),
+          leading: Checkbox(
+            value: tasks[index].isDone,
+            onChanged: (value) => taskProvider.toggleTask(index),
+          ),
+          title: Text(
+            tasks[index].title,
+            style: TextStyle(
+                decoration:
+                    tasks[index].isDone ? TextDecoration.lineThrough : null),
+          ),
+          subtitle: Text(tasks[index].description,
+            style: TextStyle(
+                decoration:
+                    tasks[index].isDone ? TextDecoration.lineThrough : null),
+          ),
           trailing: SizedBox(
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 IconButton(
                   icon: const Icon(Icons.edit),
-                  onPressed: () => loadEditTaskPage(context,index),
+                  onPressed: () => loadEditTaskPage(context, index),
                 ),
                 IconButton(
                   icon: const Icon(Icons.delete),

@@ -5,9 +5,6 @@ import 'package:to_do_list/Controller/TaskProvider.dart';
 import 'package:to_do_list/view/widgets/AppBarWidget.dart';
 
 class CreateTaskPage extends StatefulWidget {
-
-
-
   @override
   State<CreateTaskPage> createState() => _CreatetaskPageState();
 }
@@ -21,7 +18,7 @@ class _CreatetaskPageState extends State<CreateTaskPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWidget("New Task"),
+      appBar: AppBarWidget("Nueva Tarea"),
       body: Consumer<TaskProvider>(
           builder: (context, taskProvider, child) => taskForm(taskProvider)),
     );
@@ -35,25 +32,42 @@ class _CreatetaskPageState extends State<CreateTaskPage> {
         child: Column(
           children: [
             TextFormField(
-              decoration: const InputDecoration(labelText: "Title"),
-              validator: validateTaskName   ,
+              decoration: const InputDecoration(labelText: "Titulo"),
+              validator: validateTaskName,
               onChanged: (value) => title = value,
             ),
             TextFormField(
-              decoration: const InputDecoration(labelText: "Description"),
+              decoration: const InputDecoration(labelText: "Descripción"),
               validator: validateTaskDescription,
               onChanged: (value) => description = value,
             ),
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(Colors.lightBlueAccent),
-              ),
-              child: const Text("Save", style: TextStyle(color: Colors.black)),
-              onPressed: () => createTask(_key,
-                  title: title,
-                  description: description,
-                  provider: taskProvider, context: context),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        Colors.lightBlueAccent),
+                        
+                  ),
+                  child: const Text("Aceptar",
+                      style: TextStyle(color: Colors.black)),
+                  onPressed: () => createTask(_key,
+                      title: title,
+                      description: description,
+                      provider: taskProvider,
+                      context: context),
+                ),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.redAccent),
+                  ),
+                  child: const Text("Cancelar",
+                      style: TextStyle(color: Colors.white)),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ],
             )
           ],
         ),
