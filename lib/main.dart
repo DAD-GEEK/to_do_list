@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_list/Controller/TaskProvider.dart';
-import 'package:to_do_list/view/pages/CreateTaskPage.dart';
 import 'package:to_do_list/view/pages/listTaskPage.dart';
 import 'package:to_do_list/view/widgets/AppBarWidget.dart';
 import 'package:provider/provider.dart';
@@ -11,11 +10,13 @@ void main() {
     providers: [
       ChangeNotifierProvider(create: (_) => TaskProvider()),
     ],
-    child: MainApp(),
+    child: const MainApp(),
   ));
 }
 
 class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(

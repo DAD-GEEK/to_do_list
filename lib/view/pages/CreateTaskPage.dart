@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:to_do_list/Controller/CreateTaskController.dart';
 import 'package:to_do_list/Controller/TaskProvider.dart';
 import 'package:to_do_list/Model/Task.dart';
 import 'package:to_do_list/view/widgets/AppBarWidget.dart';
@@ -20,8 +21,7 @@ class _CreatetaskPageState extends State<CreateTaskPage> {
     return Scaffold(
       appBar: AppBarWidget("New Task"),
       body: Consumer<TaskProvider>(
-          builder: (context, taskProvider, child) =>
-              taskForm(taskProvider)),
+          builder: (context, taskProvider, child) => taskForm(taskProvider)),
     );
   }
 
@@ -34,29 +34,24 @@ class _CreatetaskPageState extends State<CreateTaskPage> {
           children: [
             TextFormField(
               decoration: const InputDecoration(labelText: "Title"),
-              onSaved: (value) {
-                title = value;
-              },
+              validator: validateTaskName   ,
+              onChanged: (value) => title = value,
             ),
             TextFormField(
               decoration: const InputDecoration(labelText: "Description"),
-              onSaved: (value) {
-                description = value;
-              },
+              validator: validateTaskDescription,
+              onChanged: (value) => description = value,
             ),
             ElevatedButton(
               style: ButtonStyle(
                 backgroundColor:
                     MaterialStateProperty.all<Color>(Colors.lightBlueAccent),
-
               ),
-              onPressed: () {
-                _key.currentState!.save();
-                taskProvider.addTask(Task(title: title!, description: description!));
-                Navigator.pop(context);
-              },
-              child: const Text("Save", style: TextStyle(color: Colors.black))
-              ,
+              child: const Text("Save", style: TextStyle(color: Colors.black)),
+              onPressed: () => createTask(_key,
+                  title: title,
+                  description: description,
+                  provider: taskProvider, context: context),
             )
           ],
         ),
