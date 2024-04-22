@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:to_do_list/Controller/CreateTaskController.dart';
+import 'package:to_do_list/Controller/TaskController.dart';
 import 'package:to_do_list/Controller/TaskProvider.dart';
 import 'package:to_do_list/view/widgets/AppBarWidget.dart';
 
@@ -14,6 +14,7 @@ class _CreatetaskPageState extends State<CreateTaskPage> {
 
   String? title = "";
   String? description = "";
+  TaskController _taskController = TaskController();
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class _CreatetaskPageState extends State<CreateTaskPage> {
                   ),
                   child: const Text("Aceptar",
                       style: TextStyle(color: Colors.black)),
-                  onPressed: () => createTask(_key,
+                  onPressed: () => _taskController.createTask(_key,
                       title: title,
                       description: description,
                       provider: taskProvider,

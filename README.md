@@ -1,7 +1,6 @@
 # Listado de Tareas
 
-Este proyecto es una aplicación de listado de tareas, diseñada para ayudar a los usuarios a organizar y gestionar sus tareas diarias.
-
+Este proyecto es una aplicación de listado de tareas, diseñada para ayudar a los usuarios a organizar y gestionar sus tareas diarias. integrado con una base de datos en Firebase
 
 
 ## Instalación
@@ -33,4 +32,4 @@ Este proyecto está licenciado bajo los términos de la licencia MIT.
 
 ## Contacto
 
-Si tienes alguna pregunta o sugerencia, no dudes en abrir un issue o enviarme un correo electrónico a [lejodurango@gmail.com](mailto:youremail@example.com).
+Si tienes alguna pregunta o sugerencia, no dudes en abrir un issue o enviarme un correo electrónico a [lejodurango@gmail.com](mailto:lejodurango@gmail.com).
